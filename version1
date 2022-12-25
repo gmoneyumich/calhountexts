@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Specialized;
+using System.Net;
+					
+int i = 0; // initialization
+
+while (i < 15) // condition
+{
+    
+	string[] array1d = new string[] { "7349727483", "7349450820", "7346571902", "3342337778", "3344078721", "4046171507", "4046171388", "6784676773", "4048047039", "6012038570", "8649935563", "2673834234", "4043088919", "3343126774", "7345463777", };
+	
+	//Console.WriteLine("i = {0}", array1d[i]);
+	
+	using (WebClient client = new WebClient())
+{
+  byte[] response = client.UploadValues("http://textbelt.com/text", new NameValueCollection() {
+    { "phone", array1d[i] },
+    { "message", "Seasons Greetings Family!/n/nWe are Zooming at 4 pm EST and 3pm CST CHRISTMAS DAY to celebrate the year’s blessings./n/nHere is the link./n/nTHE ZOOM ATTIRE IS THE CHECKERED CHRISTMAS BLACK AND RED PAJAMAS." },
+    { "key", "03174dc4bdb3761eb26f45159f2eacd9542d1228eFkrDEVn8tMd33guynezu8IIh"},
+  });
+
+  string result = System.Text.Encoding.UTF8.GetString(response);
+}
+	
+
+    i++; // increment
+}
